@@ -128,7 +128,7 @@ module.exports = class Sheet
  /* iterate through sheets */
     getData(sheetName)
     {
-        var worksheet = this.workbook.Sheets[sheetName.replaceAll("%20"," ")];
+        var worksheet = this.workbook.Sheets[sheetName.replaceAll(/%20/g," ")];
         let a = [];
         let actuallyLine;
         let y;
