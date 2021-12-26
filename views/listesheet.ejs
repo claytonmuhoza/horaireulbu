@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des facultes</title>
+</head>
+<body>
+    <nav>
+        <li>
+            <a href="/">Acceuil</a>
+       </li>
+        
+    </nav>
+    <h1>Choisir la faculté dont vous voulez voir l'horaire</h1>
+    <ul>
+    <%
+        data.forEach(element => {
+            %>
+            <li>
+               <a href="/mutanga/<%= element %>"><%= element %></a> 
+            </li>
+            <%
+        });
+    %>
+    </ul>
+</body>
+</html>

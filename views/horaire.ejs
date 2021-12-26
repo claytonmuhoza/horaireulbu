@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>horaire</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      *
+      {
+        padding: 0;
+        margin: 0;
+      }
+      td,tr,table
+      {
+        border: 1px solid black;
+        border-collapse:collapse;
+
+      }
+      tr:not(:first-child) :nth-child(2n+1):not(:first-child)
+      {
+        background: rgb(214, 219, 219);
+      }
+      tr:nth-child(2n)
+      {
+        background: #9aa1a0c7;
+      }
+    </style>
+  </head>
+  <body>
+      <nav>
+          <li>
+              <a href="/">Acceuil</a>
+         </li>
+          
+      </nav>
+    <h1>horaire</h1>
+    <table>
+      <tbody>
+        
+          
+        <%  for(let i=0;i<data.length;i++)
+{%><tr><%
+  for(let j=0;j<data[i].length;j++)
+  {%>
+   <td <%if(data[i][j] && data[i][j].length>40 && i<2 && (data[i][j].search("HORAIRE") > 0 || (data[i][j].search("horaire")))){%>colspan="10" <%}%>><%=data[i][j]%></td><%
+  }%></tr><%
+} 
+%>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
