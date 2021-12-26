@@ -6,8 +6,7 @@ const Sheet = require("../model/Sheet");
 
 /* GET users listing. */
 router.get('/*', function(req, res, next) {
-    try
-    {
+  
         
         let workbook = new Sheet("./horaire.xlsx");
     
@@ -22,10 +21,6 @@ router.get('/*', function(req, res, next) {
     let a = workbook.getData(sheetname);    
     res.render('horaire',{data:a});
 
-    }
-    catch(e)
-    {
-        res.send(req.url.slice(1))
-    }
+    
 });
 module.exports = router;
