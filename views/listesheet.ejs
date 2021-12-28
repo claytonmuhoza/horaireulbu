@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des facultes</title>
-</head>
+<%- include('part/header.ejs') %> 
+
 <body>
-    <nav>
-        <li>
-            <a href="/">Acceuil</a>
-       </li>
-        
-    </nav>
-    <h1>Choisir la faculté dont vous voulez voir l'horaire</h1>
-    <ul>
+    <%- include('part/menu.ejs') %> 
+    <h1 style="text-align: center;">Choisir la faculté dont vous voulez voir l'horaire</h1>
+    <ul class="list-group list-group-flush" style="margin: 10px auto; max-width: 400px; list-style: none;">
     <%
         data.forEach(element => {
             %>
-            <li>
-               <a href="/mutanga/<%= element %>"><%= element %></a> 
+            <li >
+               <a class="list-group-item list-group-item-action" href="<%= '/'+campus+'/'+element %>"><%= element %></a> 
             </li>
             <%
         });

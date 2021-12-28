@@ -1,0 +1,36 @@
+<%- include('part/header.ejs') %> 
+
+<body>
+  <%- include('part/menu.ejs') %> 
+  <div style="max-width: 400px; margin: 50px auto;">
+    <h1>Se connecter</h1>
+    
+    
+      <% try{if(message !== 'undefined'){ %>
+      <div class="alert alert-danger" role="alert">
+        <%=message%>
+      </div>  
+      <% 
+      }} catch{}%>
+    
+    <form action="/register" method="POST" >
+      <div class="mb-3">
+        <label for="email" class="form-label">Nom et prénom</label>
+        <input  class="form-control" type="text" id="name" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name='email'  required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+        <input  class="form-control" type="password" id="password" name="password" required>
+      </div>
+     
+      <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
+    <a href="/login">se connecter</a>
+  </div>
+
+</body>
+</html>

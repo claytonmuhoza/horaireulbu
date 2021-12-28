@@ -1,39 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>horaire</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <style>
-      *
-      {
-        padding: 0;
-        margin: 0;
-      }
-      td,tr,table
-      {
-        border: 1px solid black;
-        border-collapse:collapse;
+<%- include('part/header.ejs') %> 
 
-      }
-      tr:not(:first-child) :nth-child(2n+1):not(:first-child)
-      {
-        background: rgb(214, 219, 219);
-      }
-      tr:nth-child(2n)
-      {
-        background: #9aa1a0c7;
-      }
-    </style>
-  </head>
-  <body>
-      <nav>
-          <li>
-              <a href="/">Acceuil</a>
-         </li>
-          
-      </nav>
-    <h1>horaire</h1>
-    <table>
+<body>
+  <%- include('part/menu.ejs') %> 
+  
+    <h1>horaire <% if(campus){%>campus <%= campus.toUpperCase() %><%} %> </h1>
+    <table class="table table-striped table-bordered" style="margin: 10px">
       <tbody>
         
           

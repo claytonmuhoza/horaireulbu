@@ -8,7 +8,7 @@ const Sheet = require("../model/Sheet");
 router.get('/*', function(req, res, next) {
     
         try{
-        let workbook = new Sheet("./horaire.xlsx");
+        let workbook = new Sheet("./uploads/horaire mutanga.xlsx");
     
     let sheetname;
     workbook.sheet_name_list.forEach(
@@ -19,7 +19,7 @@ router.get('/*', function(req, res, next) {
             }
         })
     let a = workbook.getData(sheetname);    
-    res.render('horaire',{data:a});
+    res.render('horaire',{campus:"mutanga",title:sheetname,data:a});
     }
     catch(e)
     {

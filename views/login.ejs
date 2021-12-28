@@ -1,0 +1,29 @@
+
+<%- include('part/header.ejs') %> 
+<%- include('part/menu.ejs') %> 
+<body>
+  <div style="max-width: 400px; margin: 50px auto;">
+    <h1>Se connecter</h1>
+  <% if (messages.error) { %>
+    
+    <div class="alert alert-danger" role="alert">
+      <%= messages.error %>
+    </div>
+  <% } %>
+    <form action="/login" method="POST" >
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name='email' aria-describedby="emailHelp" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+        <input  class="form-control" type="password" id="password" name="password" required>
+      </div>
+     
+      <button type="submit" class="btn btn-primary">Se connecter</button>
+    </form>
+    <a href="/register">Register</a>
+  </div>
+
+</body>
+</html>
