@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const XLSX = require('xlsx');
-const detailMutanga = require("./detailmutanga");
+const detailMutanga = require("./detailhoraire");
 const Sheet = require("../model/Sheet");
 
 /* GET users listing. */
 router.get('/*', function(req, res, next) {
     
         try{
-        let workbook = new Sheet("./uploads/horaire mutanga.xlsx");
+        let workbook = new Sheet("./uploads/horaire kinindo.xlsx");
     
     let sheetname;
     workbook.sheet_name_list.forEach(
@@ -19,7 +19,7 @@ router.get('/*', function(req, res, next) {
             }
         })
     let a = workbook.getData(sheetname);    
-    res.render('horaire',{campus:"mutanga",title:sheetname,data:a});
+    res.render('horaire',{campus:"kinindo",title:sheetname,data:a});
     }
     catch(e)
     {
@@ -27,4 +27,5 @@ router.get('/*', function(req, res, next) {
     }
     
 });
+
 module.exports = router;
