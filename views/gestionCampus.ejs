@@ -1,0 +1,25 @@
+<%- include('part/header.ejs') %> 
+
+<body>
+  <%- include('part/menu.ejs') %> 
+  <div style="max-width: 400px; margin: 10px auto;">
+    <form class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nom du campus que vous voulez ajouter</label>
+          <input type="email" class="form-control" id="exampleInputEmail1">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter le campus</button>
+    </form>
+    <form class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nom du campus que vous voulez ajouter</label>
+          <select class="form-label" name="" id="">
+              <option value="mutanga">mutanga</option>
+              <option value="kinindo">kinindo</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Supprimer le campus</button>
+    </form>
+  </div>
+</body>
+</html>

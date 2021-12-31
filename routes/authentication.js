@@ -92,7 +92,9 @@ if (process.env.NODE_ENV !== 'production') {
     next()
   }
   app.use(fileUpload())
-  
+  app.get('/gestioncampus',(req,res,next)=>{
+    res.render('gestionCampus');
+  })
   app.get('/upload',checkAuthenticated, (req, res) => {
       res.render('upload',{connect:req.isAuthenticated()})
       //next()
