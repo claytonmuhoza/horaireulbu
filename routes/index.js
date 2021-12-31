@@ -19,6 +19,6 @@ router.get('/', function(req, res, next) {
     {
         connecter = true
     } 
-  res.render('index', {connect:connecter,title: "Bienvenu sur Horaire ULBU",listecampus:listeCampus });
+  res.render('index', {connect:connecter,title: "Bienvenu sur Horaire ULBU",listecampus:listeCampus,menu:listeCampus });
 });
 module.exports = router;

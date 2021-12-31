@@ -5,6 +5,7 @@ const detailMutanga = require("./detailhoraire");
 const Sheet = require("../model/Sheet");
 const fs = require('fs');
 const session = require('express-session');
+var listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
 /* GET users listing. */
 router.use(session({
     secret: fs.readFileSync('session-code.txt','utf-8'),
@@ -32,7 +33,7 @@ router.get('/*/*', function(req, res, next) {
     {
         connecter = true
     }    
-    res.render('horaire',{connect:connecter,campus:"mutanga",title:sheetname,data:a});
+    res.render('horaire',{connect:connecter,menu: listeCampus,campus:"mutanga",title:sheetname,data:a});
     }
     catch(e)
     {

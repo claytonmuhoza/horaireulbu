@@ -9,12 +9,22 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Accueil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/mutanga">horaire Mutanga</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/kinindo">horaire kinindo</a>
-        </li>
+        <% 
+          try {
+            if (menu) {
+              menu.forEach(element => {
+                %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/<%= element%>">horaire <%=element%></a>
+                </li>
+                <%
+              });
+            }
+          } catch  {
+            
+          }
+        %> 
+        
       </ul>
       
       <% try

@@ -36,7 +36,7 @@ router.get('/*', function(req, res, next) {
         connecter = true
     }
     console.log(req.session);
-    res.render('listesheet',{connect:connecter,title:"liste des facultés campus de Kinindo",campus: campus,data:sheet_name_list});
+    res.render('listesheet',{connect:connecter,title:"liste des facultés campus de Kinindo",menu: listeCampus,campus: campus,data:sheet_name_list});
     }else
     {
         next();
