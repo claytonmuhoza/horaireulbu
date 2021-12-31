@@ -2,9 +2,11 @@
 
 <body>
   <%- include('part/menu.ejs') %> 
-  
-    <h1>horaire <% if(campus){%>campus <%= campus.toUpperCase() %><%} %> </h1>
-    <div style="overflow-x: scroll;">
+    <style>
+
+    </style>
+    <h1>Horaire <% if(campus){%>campus <%= campus.toUpperCase() %><%} %> </h1>
+    <div style="overflow: auto;overflow-y: hidden;overflow-x: scroll;">
     <table class="table table-striped table-bordered" style="margin: 10px">
       <tbody>
         
