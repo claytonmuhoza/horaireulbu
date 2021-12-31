@@ -21,7 +21,13 @@
         <%
     }else
     {
-        %><h1 style="text-align: center; margin: 40px 0;">L'horaire du campus <%=campus.toUpperCase()%> n'est pas encore publier</h1><%
+        %>
+        <div style="text-align: center;" >
+         <h1 style="text-align: center; margin: 40px 0;">L'horaire du campus <%=campus.toUpperCase()%> n'est pas encore publier</h1>
+        <a class="btn btn-primary" href="/">retour à la page d'accueil</a>   
+        </div>
+        
+        <%
     }
     %>
     
