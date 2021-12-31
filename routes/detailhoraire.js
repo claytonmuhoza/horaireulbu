@@ -3,8 +3,14 @@ const router = express.Router();
 const XLSX = require('xlsx');
 const detailMutanga = require("./detailhoraire");
 const Sheet = require("../model/Sheet");
-
+const fs = require('fs');
+const session = require('express-session');
 /* GET users listing. */
+router.use(session({
+    secret: fs.readFileSync('session-code.txt','utf-8'),
+    resave: false,
+    saveUninitialized: false
+  }));
 router.get('/*/*', function(req, res, next) {
     
     let campus,fac;
@@ -20,8 +26,13 @@ router.get('/*/*', function(req, res, next) {
                 sheetname = element
             }
         })
-    let a = workbook.getData(sheetname);    
-    res.render('horaire',{campus:"mutanga",title:sheetname,data:a});
+    let a = workbook.getData(sheetname);
+    let connecter
+    if(req.session.passport)
+    {
+        connecter = true
+    }    
+    res.render('horaire',{connect:connecter,campus:"mutanga",title:sheetname,data:a});
     }
     catch(e)
     {

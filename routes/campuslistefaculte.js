@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const session = require('express-session')
 const XLSX = require('xlsx');
 const fs = require('fs');
 var detailRouter = require('./detailhoraire');
 var detailKinindoRouter = require('./detailhorairekinindo')
 var listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
- 
+router.use(session({
+    secret: fs.readFileSync('session-code.txt','utf-8'),
+    resave: false,
+    saveUninitialized: false
+  }))
 /* GET users listing. */
 router.get('/*', function(req, res, next) {
     var campus;
@@ -17,11 +22,21 @@ router.get('/*', function(req, res, next) {
             }
         })
     if(campus){
-    var workbook = XLSX.readFile('./uploads/horaire '+ campus +'.xlsx',{sheetStubs:true});
+        let sheet_name_list;
+    try{
+    let workbook = XLSX.readFile('./uploads/horaire '+ campus +'.xlsx',{sheetStubs:true});
     
-    var sheet_name_list = workbook.SheetNames;
-    console.log(sheet_name_list);
-    res.render('listesheet',{title:"liste des facultés campus de Kinindo",campus: campus,data:sheet_name_list});
+     sheet_name_list = workbook.SheetNames;
+    }catch{
+     sheet_name_list = [];
+    }
+    let connecter
+    if(req.session.passport)
+    {
+        connecter = true
+    }
+    console.log(req.session);
+    res.render('listesheet',{connect:connecter,title:"liste des facultés campus de Kinindo",campus: campus,data:sheet_name_list});
     }else
     {
         next();

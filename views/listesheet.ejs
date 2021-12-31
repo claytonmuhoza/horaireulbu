@@ -2,9 +2,13 @@
 
 <body>
     <%- include('part/menu.ejs') %> 
-    <h1 style="text-align: center;">Choisir la faculté dont vous voulez voir l'horaire</h1>
-    <ul class="list-group list-group-flush" style="margin: 10px auto; max-width: 400px; list-style: none;">
+    
     <%
+        if(data.length>0)
+        {%>
+          <h1 style="text-align: center;">Choisir la faculté dont vous voulez voir l'horaire</h1>
+        <ul class="list-group list-group-flush" style="margin: 10px auto; max-width: 400px; list-style: none;">  
+        <%
         data.forEach(element => {
             %>
             <li >
@@ -12,7 +16,14 @@
             </li>
             <%
         });
+        %>
+        </ul>
+        <%
+    }else
+    {
+        %><h1 style="text-align: center;">L'horaire n'est pas encore publier</h1><%
+    }
     %>
-    </ul>
+    
 </body>
 </html>

@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   app.use(flash())
   app.use(session({
-    secret: "kabulengahe nateye nau jeni ndje nudn jnan nunduen unundn unuend dfff abana 155kkl P25",
+    secret: fs.readFileSync('session-code.txt','utf-8'),
     resave: false,
     saveUninitialized: false
   }))

@@ -6,28 +6,26 @@
       Choisir le campus que vous voulez consulter l'horaire
     </h1>
     <div class="row row-cols-1 row-cols-md-2 g-4" style="padding: 10px 30px;">
-      <div class="col">
+      <% try{
+        listecampus.forEach(element => {
+          %>
+          <div class="col">
         <div class="card">
           <div class="card-body">
-            <a class="card-title" href="/mutanga">
-              <h2>Campus MUTANGA</h2>
+            <a style="text-decoration: none;color:inherit;" class="card-title" href="/<%= element%>">
+              <h2>Campus <%= element%></h2>
             </a>
-            <p class="card-text">Voir l'horaire du campus Mutanga</p>
-            <a href="/mutanga" class="btn btn-primary">Voir</a>
+            <p class="card-text">Voir l'horaire du campus <%= element%></p>
+            <a href="/<%= element%>" class="btn btn-primary">Voir</a>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <a class="card-title" href="/kinindo">
-              <h2>KININDO</h2>
-            </a>
-            <p class="card-text">Voir l'horaire du campus Kinindo</p>
-            <a href="/kinindo" class="btn btn-primary">voir</a>
-          </div>
-        </div>
-      </div>
+          <%
+        });
+      }catch{
+
+      } %> 
+      
       
     </div>
    
