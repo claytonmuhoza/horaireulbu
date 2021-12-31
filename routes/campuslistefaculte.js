@@ -1,31 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const XLSX = require('xlsx');
-
+const fs = require('fs');
 var detailRouter = require('./detailhoraire');
 var detailKinindoRouter = require('./detailhorairekinindo')
-
-
-
+var listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
  
 /* GET users listing. */
-router.get('/kinindo', function(req, res, next) {
-    console.log("before");
-    var workbook = XLSX.readFile('./uploads/horaire kinindo.xlsx',{sheetStubs:true});
-    console.log("after");
+router.get('/*', function(req, res, next) {
+    var campus;
+    listeCampus.forEach(
+        element=>{
+            if(element.replace(/\s/g,"")==(req.url.slice(1).replace(/%20/g,"")))
+            {
+                campus = element
+            }
+        })
+    if(campus){
+    var workbook = XLSX.readFile('./uploads/horaire '+ campus +'.xlsx',{sheetStubs:true});
+    
     var sheet_name_list = workbook.SheetNames;
     console.log(sheet_name_list);
-    res.render('listesheet',{title:"liste des facultés campus de Kinindo",campus:"Kinindo",data:sheet_name_list});
-  
+    res.render('listesheet',{title:"liste des facultés campus de Kinindo",campus: campus,data:sheet_name_list});
+    }else
+    {
+        next();
+    }
 });
-router.get('/mutanga', function(req, res, next) {
-    var workbook = XLSX.readFile('./uploads/horaire mutanga.xlsx',{sheetStubs:true});
-    var sheet_name_list = workbook.SheetNames;
-    res.render('listesheet',{title:"liste des facultés campus mutanga",campus:"mutanga",data:sheet_name_list});
-  
-});
+
 //detail feuille
-router.use('/mutanga',detailRouter)
-router.use('/kinindo',detailKinindoRouter)
+router.use('/',detailRouter)
+router.use('/',detailKinindoRouter)
 
 module.exports = router;

@@ -5,15 +5,17 @@ const detailMutanga = require("./detailhoraire");
 const Sheet = require("../model/Sheet");
 
 /* GET users listing. */
-router.get('/*', function(req, res, next) {
+router.get('/*/*', function(req, res, next) {
     
+    let campus,fac;
+    campus = req.url.split("/")[1].replace(/%20/g," ");
+    fac = req.url.split("/")[2];
         try{
-        let workbook = new Sheet("./uploads/horaire mutanga.xlsx");
-    
+        let workbook = new Sheet("./uploads/horaire "+campus+".xlsx");
     let sheetname;
     workbook.sheet_name_list.forEach(
         element=>{
-            if(element.replace(/\s/g,"")==(req.url.slice(1).replace(/%20/g,"")))
+            if(element.replace(/\s/g,"")==(fac.replace(/%20/g,"")))
             {
                 sheetname = element
             }
