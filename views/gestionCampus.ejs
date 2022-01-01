@@ -3,19 +3,54 @@
 <body>
   <%- include('part/menu.ejs') %> 
   <div style="max-width: 400px; margin: 10px auto;">
-    <form class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+    <form method="post" encType="multipart/form-data" class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+        <% try{if(message.error !== 'undefined' && message.error){ %>
+            <div class="alert alert-danger mb-3" role="alert">
+              <%=message.error%>
+            </div>  
+            <%} if(message.success !== 'undefined' && message.success){ %>
+                <div class="alert alert-success mb-3" role="alert">
+                  <%=message.success%>
+                </div>  
+                <% 
+                
+            }} catch{}%>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Nom du campus que vous voulez ajouter</label>
-          <input type="email" class="form-control" id="exampleInputEmail1">
+          <input type="text" class="form-control" name="nomcampus" id="exampleInputEmail1">
         </div>
         <button type="submit" class="btn btn-primary">Ajouter le campus</button>
     </form>
-    <form class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Nom du campus que vous voulez ajouter</label>
-          <select class="form-label" name="" id="">
-              <option value="mutanga">mutanga</option>
-              <option value="kinindo">kinindo</option>
+    <form onsubmit="return confirm('Voulez-vous vraiment supprimer ce campus');" action="/gestioncampus?_method=DELETE" method="POST" class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+      <% try{if(message.error2 !== 'undefined' && message.error2){ %>
+        <div class="alert alert-danger mb-3" role="alert">
+          <%=message.error2%>
+        </div>  
+        <%} if(message.success2 !== 'undefined' && message.success2){ %>
+            <div class="alert alert-success mb-3" role="alert">
+              <%=message.success2%>
+            </div>  
+            <% 
+            
+        }} catch{}%>
+       
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nom du campus que vous voulez supprimer</label>
+          <select class="form-select" name="nomcampus" id="">
+              <% 
+                try{
+                  listecampus.forEach(element => {
+                        %>
+                        <option  value="<%= element%>"><%=element%></option>
+                        <%
+                    });
+                }catch{
+                  
+                }
+                    
+                
+            %> 
+              
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Supprimer le campus</button>

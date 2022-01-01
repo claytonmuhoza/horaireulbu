@@ -2,12 +2,15 @@
 
 <body>
     <%- include('part/menu.ejs') %> 
-    <h1>
+    
+      <% try{
+        if(listecampus.length>0){
+        %>
+        <h1>
       Choisir le campus que vous voulez consulter l'horaire
     </h1>
     <div class="row row-cols-1 row-cols-md-2 g-4" style="padding: 10px 30px;">
-      <% try{
-        listecampus.forEach(element => {
+        <%listecampus.forEach(element => {
           %>
           <div class="col">
         <div class="card">
@@ -21,13 +24,26 @@
         </div>
       </div>
           <%
-        });
+        });%>
+    </div>  
+      <%}else
+      {
+        %>
+        <h1 style="margin: 20px;text-align: center; font-weight: 500;">
+      IL n'y a pas encore d'horaire qui a été publié.
+    </h1>
+        <%
+      }
       }catch{
-
+        %>
+        <h1 style="margin: 20px;text-align: center; font-weight: 500;">
+      IL n'y a pas encore d'horaire qui a été publié.
+    </h1>
+        <%
       } %> 
       
       
-    </div>
+    
    
   </body>
 </html>

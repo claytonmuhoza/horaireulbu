@@ -3,7 +3,6 @@ const router = express.Router();
 const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
-var listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
 const session = require('express-session');
 /* GET users listing. */
 router.use(session({
@@ -14,6 +13,7 @@ router.use(session({
   
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  let listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8'));
   let connecter
     if(req.session.passport)
     {

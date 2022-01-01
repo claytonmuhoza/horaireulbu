@@ -4,8 +4,7 @@ const XLSX = require('xlsx');
 const detailMutanga = require("./detailhoraire");
 const Sheet = require("../model/Sheet");
 const fs = require('fs');
-const session = require('express-session');
-var listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
+const session = require('express-session'); 
 /* GET users listing. */
 router.use(session({
     secret: fs.readFileSync('session-code.txt','utf-8'),
@@ -13,7 +12,7 @@ router.use(session({
     saveUninitialized: false
   }));
 router.get('/*/*', function(req, res, next) {
-    
+    let listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8'));
     let campus,fac;
     campus = req.url.split("/")[1].replace(/%20/g," ");
     fac = req.url.split("/")[2];

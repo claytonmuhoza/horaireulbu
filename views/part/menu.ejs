@@ -15,7 +15,7 @@
               menu.forEach(element => {
                 %>
                 <li class="nav-item">
-                  <a class="nav-link" href="/<%= element%>">horaire <%=element%></a>
+                  <a class="nav-link" href="/<%= element%>">horaire <%=element.toUpperCase()%></a>
                 </li>
                 <%
               });
@@ -23,6 +23,20 @@
           } catch  {
             
           }
+      try
+{
+  if(connect === true)
+  {%>
+    <li class="nav-item">
+      <a class="nav-link" href="/upload/">Publier l'horaire</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/gestioncampus">Gérer les campus</a>
+    </li>
+  <%}
+}catch{
+
+}%>
         %> 
         
       </ul>

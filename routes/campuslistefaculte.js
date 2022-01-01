@@ -5,7 +5,7 @@ const XLSX = require('xlsx');
 const fs = require('fs');
 var detailRouter = require('./detailhoraire');
 var detailKinindoRouter = require('./detailhorairekinindo')
-var listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
+
 router.use(session({
     secret: fs.readFileSync('session-code.txt','utf-8'),
     resave: false,
@@ -13,6 +13,7 @@ router.use(session({
   }))
 /* GET users listing. */
 router.get('/*', function(req, res, next) {
+    let listeCampus = JSON.parse(fs.readFileSync('./campus.json','utf-8')); 
     var campus;
     listeCampus.forEach(
         element=>{
@@ -36,7 +37,7 @@ router.get('/*', function(req, res, next) {
         connecter = true
     }
     console.log(req.session);
-    res.render('listesheet',{connect:connecter,title:"liste des facultés campus de Kinindo",menu: listeCampus,campus: campus,data:sheet_name_list});
+    res.render('listesheet',{connect:connecter,title:`liste des facultés du campus  ${campus.toUpperCase()}`,menu: listeCampus,campus: campus,data:sheet_name_list});
     }else
     {
         next();
