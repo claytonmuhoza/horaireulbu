@@ -174,6 +174,49 @@ app.delete('/gestioncampus',checkAuthenticated,(req,res)=>{
       console.log(listeCampus.indexOf(req.body.nomcampus) )
       res.redirect('/gestioncampus');
 })
+app.delete('/horairecampus',checkAuthenticated,(req,res)=>{
+  function removeArray(array, index) {
+    return array.slice(0, index)
+      .concat(array.slice(index + 1));
+  }
+  try
+      {
+        if(req.body.nomcampus && (listeCampus.indexOf(req.body.nomcampus.trim())>=0) )
+        {
+          
+        
+          try{
+            let link = "./uploads/horaire "+req.body.nomcampus.trim()+".xlsx"
+            fs.stat(link, function (err, stats) {
+              
+           
+              if (err) {
+                  return console.error(err);
+              }
+           
+              fs.unlink(link,function(err){
+                   if(err) return console.log(err);
+                   console.log('file deleted successfully');
+              });  
+           });
+          }catch(err)
+          {
+            console.log("error"+err)
+          }
+          req.session.message = {success3:"L'horaire du campus "+ req.body.nomcampus + " a été supprimé avec succes."};
+        }
+        else{
+          
+          req.session.message = {error3:"Il y a eu une erreur.Veuillez réessayer à nouveau."};
+        }
+      }
+      catch(e)
+      {
+        req.session.message = {error3:"Il y a eu une erreur.Veuillez réessayer à nouveau."};
+      }
+      console.log(listeCampus.indexOf(req.body.nomcampus) )
+      res.redirect('/gestioncampus');
+})
 app.get('/upload',checkAuthenticated, (req, res) => {
   try{
       

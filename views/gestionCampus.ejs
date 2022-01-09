@@ -55,6 +55,40 @@
         </div>
         <button type="submit" class="btn btn-primary">Supprimer le campus</button>
     </form>
+    <form onsubmit="return confirm(`Voulez-vous vraiment supprimer l'horaire de ce campus`);" action="/horairecampus?_method=DELETE" method="POST" class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+      <% try{if(message.error3 !== 'undefined' && message.error3){ %>
+        <div class="alert alert-danger mb-3" role="alert">
+          <%=message.error3%>
+        </div>  
+        <%} if(message.success3 !== 'undefined' && message.success3){ %>
+            <div class="alert alert-success mb-3" role="alert">
+              <%=message.success3%>
+            </div>  
+            <% 
+            
+        }} catch{}%>
+       
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nom du campus que vous voulez supprimer l'horaire</label>
+          <select class="form-select" name="nomcampus" id="">
+              <% 
+                try{
+                  listecampus.forEach(element => {
+                        %>
+                        <option  value="<%= element%>"><%=element%></option>
+                        <%
+                    });
+                }catch{
+                  
+                }
+                    
+                
+            %> 
+              
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Supprimer l'horaire du campus</button>
+    </form>
   </div>
 </body>
 </html>
