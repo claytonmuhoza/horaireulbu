@@ -282,7 +282,7 @@ app.post('/upload',checkAuthenticated, (req, res,next) => {
       {
           console.log(err)
           
-         req.session.message={error:"Le fichier n'a pas été publié. veuillez réessayer" + err};
+         req.session.message={error:"Le fichier n'a pas été publié. veuillez réessayer"};
           return res.redirect('/upload');
       }
       else{
