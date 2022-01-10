@@ -26,9 +26,9 @@
  
  
 <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
-<script src="/javascripts/file-input-lang.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/javascripts/file-input-lang.js"></script>
     <style>
         .container{
             margin: 20px auto;
@@ -78,7 +78,41 @@
             </div>
             <input type='submit' class="btn btn-primary" value="Publier l'horaire" />
         </form>
-        
+        <h1 class="mt-4">Supprimer l'horaire d'un campus</h1>
+        <form onsubmit="return confirm(`Voulez-vous vraiment supprimer l'horaire de ce campus`);" action="/horairecampus?_method=DELETE" method="POST" class="mb-3" style="box-shadow: 1px 2px 3px #0000006b; padding: 10px;">
+      <% try{if(message.error3 !== 'undefined' && message.error3){ %>
+        <div class="alert alert-danger mb-3" role="alert">
+          <%=message.error3%>
+        </div>  
+        <%} if(message.success3 !== 'undefined' && message.success3){ %>
+            <div class="alert alert-success mb-3" role="alert">
+              <%=message.success3%>
+            </div>  
+            <% 
+            
+        }} catch{}%>
+       
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Selectionner le nom du campus dont vous voulez supprimer l'horaire</label>
+          <select class="form-select" name="nomcampus" id="">
+              <% 
+                try{
+                  listecampus.forEach(element => {
+                        %>
+                        <option  value="<%= element%>"><%=element%></option>
+                        <%
+                    });
+                }catch{
+                  
+                }
+                    
+                
+            %> 
+              
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Supprimer l'horaire du campus</button>
+    </form>
     </div>
 
 </body>

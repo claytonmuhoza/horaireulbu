@@ -215,7 +215,7 @@ app.delete('/horairecampus',checkAuthenticated,(req,res)=>{
         req.session.message = {error3:"Il y a eu une erreur.Veuillez réessayer à nouveau."};
       }
       console.log(listeCampus.indexOf(req.body.nomcampus) )
-      res.redirect('/gestioncampus');
+      res.redirect('/upload');
 })
 app.get('/upload',checkAuthenticated, (req, res) => {
   try{

@@ -32,7 +32,9 @@
       domtoimage.toJpeg(document.getElementById('tablehoraire'), { quality: 0.85 })
     .then(function (dataUrl) {
         var link = document.createElement('a');
-        link.download = 'horaire des cours lumiere.jpeg';
+        const today = new Date();
+        const todayDate = today.getDate() + "_" + (today.getMonth() + 1) + "_" + today.getFullYear();
+        link.download = 'horaire des cours lumiere '+ todayDate +'.jpg';
         link.href = dataUrl;
         link.click();
     });
