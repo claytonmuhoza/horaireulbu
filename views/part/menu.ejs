@@ -1,61 +1,59 @@
 <nav class="navbar navbar-expand-lg navbar-light light border-bottom">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="/ulbusitelogo.png" height="50px"/></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Accueil</a>
-        </li>
-        <% 
-          try {
-            if (menu) {
-              menu.forEach(element => {
-                %>
-                <li class="nav-item">
-                  <a class="nav-link" href="/<%= element%>">horaire <%=element.toUpperCase()%></a>
-                </li>
-                <%
-              });
-            }
-          } catch  {
-            
+  <a class="navbar-brand" href="/"><img src="/ulbusitelogo.png" height="50px"/></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+      </li>
+      <% 
+        try {
+          if (menu) {
+            menu.forEach(element => {
+              %>
+              <li class="nav-item">
+                <a class="nav-link" href="/<%= element%>">horaire <%=element.toUpperCase()%></a>
+              </li>
+              <%
+            });
           }
-      try
+        } catch  {
+          
+        }
+    try
 {
-  if(connect === true)
-  {%>
-    <li class="nav-item">
-      <a class="nav-link" href="/upload/">Publier l'horaire</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/gestioncampus">Gérer les campus</a>
-    </li>
-  <%}
+if(connect === true)
+{%>
+  <li class="nav-item">
+    <a class="nav-link" href="/upload/">Publier l'horaire</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/gestioncampus">Gérer les campus</a>
+  </li>
+<%}
 }catch{
 
 }%>
-        %> 
-        
-      </ul>
+      %> 
       
-      <% try
+    </ul>
+    
+    <% try
 {
-  if(connect === true)
-  {%>
-    <div class="d-flex">
-      <a type="button" href="/register" class="btn btn-outline-primary me-2">Inscrire utilisateur</a>
-     
-      <form style="display: inline;" action="/logout?_method=DELETE" method="POST">
-        <button class="btn btn-primary" style="display: inline ;" type="submit">Se deconnecter</button>
-      </form>
-    </div>
-  <%}
+if(connect === true)
+{%>
+  <div class="d-flex">
+    <a type="button" href="/register" class="btn btn-outline-primary me-2">Inscrire utilisateur</a>
+   
+    <form style="display: inline;" action="/logout?_method=DELETE" method="POST">
+      <button class="btn btn-primary" style="display: inline ;" type="submit">Se deconnecter</button>
+    </form>
+  </div>
+<%}
 }catch{
 
 }%>
-    </div>
   </div>
 </nav>

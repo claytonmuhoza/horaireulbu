@@ -2,14 +2,14 @@
 
 <body>
     <%- include('part/menu.ejs') %> 
-    
+  <div class="mx-4"> 
       <% try{
         if(listecampus.length>0){
         %>
-        <h1>
+        <h1 class="mx-4" style="text-align: center;">
       Choisir le campus que vous voulez consulter l'horaire
     </h1>
-    <div class="row row-cols-1 row-cols-md-2 g-4" style="padding: 10px 30px;">
+    <div class="row row-cols-1 row-cols-md-2 mx-2 g-4" style="padding: 10px 30px;">
         <%listecampus.forEach(element => {
           %>
           <div class="col">
@@ -44,6 +44,6 @@
       
       
     
-   
+  </div> 
   </body>
 </html>
