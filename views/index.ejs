@@ -6,13 +6,13 @@
       <% try{
         if(listecampus.length>0){
         %>
-        <h1 class="mx-4" style="text-align: center;">
-      Choisir le campus que vous voulez consulter l'horaire
+        <h1 class="mx-4" >
+      Choisir le campus
     </h1>
     <div class="row row-cols-1 row-cols-md-2  g-4" style="padding: 10px 30px;">
         <%listecampus.forEach(element => {
           %>
-          <div class="col my-2" style="min-width: 400px;">
+          <div class="col my-2">
         <div class="card">
           <div class="card-body">
             <a style="text-decoration: none;color:inherit;" class="card-title" href="/<%= element%>">
