@@ -1,8 +1,58 @@
+
+
 body {
-  padding: 50px;
+  height: 100vh;
+  width: 100vw;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.d-flex{
+  gap: 1rem;
+}
+
+  body h1{
+    text-align: center;
+    
+  }
+
 a {
   color: #00B7FF;
+}
+
+@media screen and  (max-width: 800px){
+
+  body h2{
+    font-size: 2rem;
+  }
+
+  .d-flex{
+    gap: 1rem;
+  }
+
+  body h1{
+    text-align: center;
+    
+  }
+
+  .display{
+    min-width: 80%;
+  }
+}
+
+@media screen and  (max-width: 600px){
+
+  body h1{
+    font-size: 2rem;
+  }
+
+  body h2{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and  (max-width: 400px){
+
+  .display{
+    min-width: 90%;
+  }
 }

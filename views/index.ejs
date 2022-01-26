@@ -1,5 +1,4 @@
 <%- include('part/header.ejs') %> 
-
 <body>
     <%- include('part/menu.ejs') %> 
   <div class="mx-4"> 
@@ -7,21 +6,21 @@
         if(listecampus.length>0){
         %>
         <h1>
-      Choisir le campus
+      Choisir le Campus
     </h1>
-    <div class="row row-cols-1 row-cols-md-2  g-4" style="padding: 10px 30px;">
+    <div class="row row-cols-1 row-cols-md-2  g-4 " style="padding: 10px 30px;">
         <%listecampus.forEach(element => {
           %>
-          <div class="col my-2">
-        <div class="card">
-          <div class="card-body">
-            <a style="text-decoration: none;color:inherit;" class="card-title" href="/<%= element%>">
-              <h2>Campus <%= element.toUpperCase()%></h2>
-            </a>
-            <p class="card-text">Voir l'horaire du campus <%= element%></p>
-            <a href="/<%= element%>" class="btn btn-primary">Voir</a>
+        <div class="col my-2 display">
+          <div class="card " >
+            <div class="card-body">
+              <a style="text-decoration: none;color:inherit;" class="card-title" href="/<%= element%>">
+                <h2>Campus <%= element.toUpperCase()%></h2>
+              </a>
+              <p class="card-text">Voir l'horaire du campus <%= element%></p>
+              <a href="/<%= element%>" class="btn btn-primary">Voir</a>
+            </div>
           </div>
-        </div>
       </div>
           <%
         });%>
@@ -42,8 +41,8 @@
         <%
       } %> 
       
-      
-    
-  </div> 
+  </div>
+
+  
   </body>
 </html>
